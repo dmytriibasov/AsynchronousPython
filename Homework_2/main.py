@@ -41,11 +41,10 @@ async def read_file(filepath):
     return tasks
 
 
-async def main(filepath):
+async def main():
+    filepath = sys.argv[-1]
     tasks = await read_file(filepath)
     await asyncio.gather(*tasks, return_exceptions=True)
 
 
-if __name__ == "__main__":
-    filepath = sys.argv[-1]
-    asyncio.run(main(filepath))
+asyncio.run(main())
