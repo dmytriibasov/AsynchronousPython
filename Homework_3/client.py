@@ -29,14 +29,4 @@ class WeatherServerClient:
         await writer.wait_closed()
 
 
-    # async def main():
-    #     message = "What is the weather today?"
-    #     reader, writer = await asyncio.open_connection("localhost", 8000)
-    #     print('Connected')
-    #     await send_message(writer, message)
-    #     await read_response(reader)
-    #     writer.close()
-    #     await writer.wait_closed()
-
-
 asyncio.run(WeatherServerClient().run_client())
