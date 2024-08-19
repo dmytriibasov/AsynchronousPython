@@ -15,9 +15,15 @@ class WeatherServerClient:
 
     async def read_response(self, reader: asyncio.StreamReader):
         print('Waiting for response...')
-        msg = await reader.readline()
-        response = msg.decode()
-        print(f'Server responded: {response}')
+
+        while True:
+            msg = await reader.readline()
+            if not msg:
+                print('Connection closed by the server.')
+                break
+
+            response = msg.decode()
+            print(f'Server responded: {response}')
 
     async def run_client(self):
         message = "What is the weather today?"

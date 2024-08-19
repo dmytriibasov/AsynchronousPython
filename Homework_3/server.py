@@ -13,7 +13,9 @@ class BroadcastWeatherServer:
         self.clients.add(writer)
 
         try:
-            await asyncio.sleep(30)
+            while True:
+                await asyncio.sleep(1)
+
         except asyncio.CancelledError:
             pass
         finally:
@@ -31,9 +33,6 @@ class BroadcastWeatherServer:
                 try:
                     client.write(message.encode())
                     await client.drain()
-                    client.close()
-                    await client.wait_closed()
-                    self.clients.remove(client)
 
                 except Exception as e:
                     print(f'Failed to send to the client')
