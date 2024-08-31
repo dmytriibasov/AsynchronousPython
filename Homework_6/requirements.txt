@@ -1,0 +1,6 @@
+asyncpg
+sqlalchemy
+alembic
+#
+faker
+aiofiles
